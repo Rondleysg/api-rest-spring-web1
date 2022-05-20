@@ -1,5 +1,6 @@
 package br.edu.ifs.project_web.service;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,8 +9,11 @@ import br.edu.ifs.project_web.model.Usuario;
 import br.edu.ifs.project_web.repository.UsuarioRepository;
 
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Service
 public class UsuarioService {
@@ -95,4 +99,15 @@ public class UsuarioService {
     	return toString;
     }
 
+    public UsuarioDTO getUsuHeader(HttpServletRequest request) {
+    	String token = request.getHeader("Authorization");
+    	token.replace("Bearer ", "");
+    	String[] chunks = token.split("\\.");
+    	Base64.Decoder decoder = Base64.getUrlDecoder();
+    	String payload = new String(decoder.decode(chunks[1]));
+    	JSONObject jsonObject = new JSONObject(payload);
+    	UsuarioDTO usu=getByLogin(jsonObject.getString("sub"));
+    	return usu;
+    }
+    
 }

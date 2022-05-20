@@ -2,6 +2,7 @@ package br.edu.ifs.project_web.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,19 @@ public class TransacaoService {
             l.add(item);
                 });
         return l;
+    }
+	
+	public void alterar(Transacao transacao) {
+        Optional<Transacao> opTra = transacaoRepository.findById(transacao.getTraNrId());
+        if (opTra.isPresent()) {
+        	Transacao traBD = opTra.get();
+        	traBD.setPerNrId(transacao.getPerNrId());
+        	traBD.setSerNrId(transacao.getSerNrId());
+        	traBD.setTraTxNome(transacao.getTraTxNome());
+        	traBD.setTraTxStatus(transacao.getTraTxStatus());
+        	traBD.setTraTxUrl(transacao.getTraTxUrl());
+        	transacaoRepository.save(traBD);
+        }
     }
 	
 	public void criar(Transacao transacao) throws Exception{

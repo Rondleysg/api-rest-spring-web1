@@ -25,7 +25,7 @@ public class Transacao {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "tran_nr_id")
+	@Column(name = "tra_nr_id")
 	private int traNrId;
 	@ManyToOne
 	@JoinColumn(name = "per_nr_id")

@@ -2,6 +2,7 @@ package br.edu.ifs.project_web.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,16 @@ public class SistemaService {
                 });
         return l;
 	}
+	
+	public void alterar(Sistema sistema) {
+        Optional<Sistema> opSis = sistemaRepository.findById(sistema.getSisNrId());
+        if (opSis.isPresent()) {
+        	Sistema sisBD = opSis.get();
+        	sisBD.setSisTxNome(sistema.getSisTxNome());
+        	sisBD.setSisTxStatus(sistema.getSisTxStatus());
+        	sistemaRepository.save(sisBD);
+        }
+    }
 	
 	public void criar(Sistema sistema) throws Exception{
 		if(sistema == null) {

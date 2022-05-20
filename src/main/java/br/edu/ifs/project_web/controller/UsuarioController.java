@@ -1,11 +1,9 @@
 package br.edu.ifs.project_web.controller;
 
 import java.sql.Date;
-import java.util.Base64;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,8 +26,7 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 @RequestMapping("/api/usuario")
 public class UsuarioController {
-
-    private final UsuarioRepository repository;
+	
     ResponseDefault response = new ResponseDefault();
 	private String logExecucao;
     
@@ -39,25 +36,14 @@ public class UsuarioController {
 	LogService logService;
 	@Autowired
 	PerfilService perfilService;
+	@Autowired
+	UsuarioRepository repository;
 
-    public UsuarioController(UsuarioRepository repository) {
-        this.repository = repository;
-    }
     
-    private UsuarioDTO getUsuHeader(HttpServletRequest request) {
-    	String token = request.getHeader("Authorization");
-    	token.replace("Bearer ", "");
-    	String[] chunks = token.split("\\.");
-    	Base64.Decoder decoder = Base64.getUrlDecoder();
-    	String payload = new String(decoder.decode(chunks[1]));
-    	JSONObject jsonObject = new JSONObject(payload);
-    	UsuarioDTO usu=usuarioService.getByLogin(jsonObject.getString("sub"));
-    	return usu;
-    }
     
     @GetMapping(value = "/usuByLogin")
     public Object getByLogin(HttpServletRequest request, @RequestBody String usuTxLogin) {
-    	UsuarioDTO usu = getUsuHeader(request);
+    	UsuarioDTO usu = usuarioService.getUsuHeader(request);
     	if(usu.getPerNrId().getPerNrId()<2) {
     		logService.criar(usu.getUsuNrId(), "Tentou buscar um usuário");
     		return null;
@@ -77,7 +63,7 @@ public class UsuarioController {
     
     @GetMapping(value = "/usuById")
     public Object getById(HttpServletRequest request, @RequestBody Integer usuNrId) {
-    	UsuarioDTO usu = getUsuHeader(request);
+    	UsuarioDTO usu = usuarioService.getUsuHeader(request);
     	if(usu.getPerNrId().getPerNrId()<2) {
     		logService.criar(usu.getUsuNrId(), "Tentou buscar um usuário");
     		return null;
@@ -106,7 +92,7 @@ public class UsuarioController {
 
     @GetMapping("/listarTodos")
     public ResponseEntity<List<Usuario>> listarTodos(HttpServletRequest request) {
-    	UsuarioDTO usu = getUsuHeader(request);
+    	UsuarioDTO usu = usuarioService.getUsuHeader(request);
     	if(usu.getPerNrId().getPerNrId()<2) {
     		logService.criar(usu.getUsuNrId(), "Tentou listar todos os usuários");
     		return null;
@@ -117,7 +103,7 @@ public class UsuarioController {
 
     @PutMapping("/salvar")
     public ResponseEntity<Usuario> salvar(@RequestBody Usuario usuario, HttpServletRequest request) {
-    	UsuarioDTO usu = getUsuHeader(request);
+    	UsuarioDTO usu = usuarioService.getUsuHeader(request);
     	if(usu.getPerNrId().getPerNrId()<2) {
     		logService.criar(usu.getUsuNrId(), "Tentou fazer update em um usuário.");
     		return null;
@@ -144,7 +130,7 @@ public class UsuarioController {
     
     @PostMapping(value = "/criarUsuario")
     public Object criarUsuario(@RequestBody UsuarioCreate usuarioCreate, HttpServletRequest request) throws Throwable {
-    	UsuarioDTO usu = getUsuHeader(request);
+    	UsuarioDTO usu = usuarioService.getUsuHeader(request);
     	/*if(usu.getPerNrId().getPerNrId()<2) {
     		logService.criar(usu.getUsuNrId(), "Tentou criar um usuário.");
     		response.setCodigo(400);
@@ -176,7 +162,7 @@ public class UsuarioController {
     
     @DeleteMapping(value = "/deletarUsuario")
     public Object deletarUsuario(@RequestBody String login, HttpServletRequest request) throws Throwable {
-    	UsuarioDTO usu = getUsuHeader(request);
+    	UsuarioDTO usu = usuarioService.getUsuHeader(request);
     	if(usu.getPerNrId().getPerNrId()<2) {
     		logService.criar(usu.getUsuNrId(), "Tentou criar um usuário.");
     		response.setCodigo(400);

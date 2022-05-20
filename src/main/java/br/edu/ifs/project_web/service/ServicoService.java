@@ -2,6 +2,7 @@ package br.edu.ifs.project_web.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,6 +39,18 @@ public class ServicoService {
             l.add(item);
                 });
         return l;
+    }
+	
+    public void alterar(Servico servico) {
+        Optional<Servico> opSer = servicoRepository.findById(servico.getSerNrId());
+        if (opSer.isPresent()) {
+        	Servico serBD = opSer.get();
+        	serBD.setSerTxNome(servico.getSerTxNome());
+        	serBD.setSerTxStatus(servico.getSerTxStatus());
+        	serBD.setSerTxUrl(servico.getSerTxUrl());
+        	serBD.setSisNrId(servico.getSisNrId());
+        	servicoRepository.save(serBD);
+        }
     }
 	
 	public void criar(Servico servico) throws Exception{
