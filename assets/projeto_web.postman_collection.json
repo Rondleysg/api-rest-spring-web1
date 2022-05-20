@@ -1,0 +1,1035 @@
+{
+	"info": {
+		"_postman_id": "6ccf550d-794f-4034-a012-de3ef202d1f8",
+		"name": "projeto_web",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Usuario Controller",
+			"item": [
+				{
+					"name": "Usuario por Login",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQcm9qZWN0V2ViIiwic3ViIjoicm9uZGxleSIsImlhdCI6MTY1Mjc1NzY1MiwiZXhwIjoxNjUyNzU4MjUyfQ.LGklcfwgn9ElKruvFNRHSowYz_mCrMOQloB-iu2OcpA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "rondley",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/usuario/usuByLogin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"usuario",
+								"usuByLogin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuario por ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQcm9qZWN0V2ViIiwic3ViIjoicm9uZGxleSIsImlhdCI6MTY1Mjc1NzY1MiwiZXhwIjoxNjUyNzU4MjUyfQ.LGklcfwgn9ElKruvFNRHSowYz_mCrMOQloB-iu2OcpA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "3",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/usuario/usuById",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"usuario",
+								"usuById"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Todos Usuarios",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQcm9qZWN0V2ViIiwic3ViIjoicm9uZGxleSIsImlhdCI6MTY1Mjc1NjU5MiwiZXhwIjoxNjUyNzU3MTkyfQ.BepF_UqmwJQgvp8IXC5o58dxDw2cJ26UD43hGxMI2Aw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/usuario/listarTodos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"usuario",
+								"listarTodos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "validarSenha",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQcm9qZWN0V2ViIiwic3ViIjoicm9uZGxleSIsImlhdCI6MTY1MjQ4MzM3NywiZXhwIjoxNjUyNDgzOTc3fQ.U6_Yn_IfcXhygpNQ0knuTljXWBlK9zSEg-11jApto5s",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/validarSenha?login=rondley&senha=123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"validarSenha"
+							],
+							"query": [
+								{
+									"key": "login",
+									"value": "rondley"
+								},
+								{
+									"key": "senha",
+									"value": "123"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar Usuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQcm9qZWN0V2ViIiwic3ViIjoicm9uZGxleSIsImlhdCI6MTY1Mjc1NjU5MiwiZXhwIjoxNjUyNzU3MTkyfQ.BepF_UqmwJQgvp8IXC5o58dxDw2cJ26UD43hGxMI2Aw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"usuTxNome\": \"Teste ron 3\",\r\n        \"usuTxLogin\": \"ronteste3\",\r\n        \"usuTxSenha\": \"12dois3\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/usuario/criarUsuario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"usuario",
+								"criarUsuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Usuario",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQcm9qZWN0V2ViIiwic3ViIjoicm9uZGxleSIsImlhdCI6MTY1MzA1OTEwOCwiZXhwIjoxNjUzMDU5NzA4fQ.rq7BrSfRmr6R_xHos2fohAGSGRjDOk51aXAAXo7NflY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"usuNrId\": 1,\r\n        \"perNrId\": {\r\n            \"perNrId\": 4,\r\n            \"perTxNome\": \"Administrador\",\r\n            \"perTxStatus\": \"A\"\r\n        },\r\n        \"usuTxNome\": \"Jose Rondley\",\r\n        \"usuTxSenha\": \"123\",\r\n        \"usuTxLogin\": \"rondley\",\r\n        \"usuTxStatus\": \"A\",\r\n        \"usuDtCadastro\": \"2022-05-02T16:51:05.000+00:00\",\r\n        \"usuTxToken\": \"eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQcm9qZWN0V2ViIiwic3ViIjoicm9uZGxleSIsImlhdCI6MTY1MzA1OTEwOCwiZXhwIjoxNjUzMDU5NzA4fQ.rq7BrSfRmr6R_xHos2fohAGSGRjDOk51aXAAXo7NflY\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/usuario/salvar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"usuario",
+								"salvar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Usuario",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQcm9qZWN0V2ViIiwic3ViIjoicm9uZGxleSIsImlhdCI6MTY1Mjc2MDA1MCwiZXhwIjoxNjUyNzYwNjUwfQ.v6onGga85RS-OX0zFPByHip_-e9YTqmyT8_jfeZZrx0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "santos2",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/usuario/deletarUsuario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"usuario",
+								"deletarUsuario"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Perfil Controller",
+			"item": [
+				{
+					"name": "Perfil pelo ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQcm9qZWN0V2ViIiwic3ViIjoicm9uZGxleSIsImlhdCI6MTY1Mjc1NjU5MiwiZXhwIjoxNjUyNzU3MTkyfQ.BepF_UqmwJQgvp8IXC5o58dxDw2cJ26UD43hGxMI2Aw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "2",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/perfil/perfilById",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"perfil",
+								"perfilById"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Todos Perfis",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQcm9qZWN0V2ViIiwic3ViIjoicm9uZGxleSIsImlhdCI6MTY1Mjc1NjU5MiwiZXhwIjoxNjUyNzU3MTkyfQ.BepF_UqmwJQgvp8IXC5o58dxDw2cJ26UD43hGxMI2Aw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/perfil/listarTodos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"perfil",
+								"listarTodos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar Perfil",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQcm9qZWN0V2ViIiwic3ViIjoicm9uZGxleSIsImlhdCI6MTY1MzA1ODE3OCwiZXhwIjoxNjUzMDU4Nzc4fQ.fVKqQ_MG7lNAPEapt_LYxrE7AUOtZFGL1x2shyWvxHE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"perTxNome\": \"Administrador\",\r\n        \"perTxStatus\": \"I\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/perfil/createPerfil",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"perfil",
+								"createPerfil"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Perfil",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQcm9qZWN0V2ViIiwic3ViIjoicm9uZGxleSIsImlhdCI6MTY1MzA1ODE3OCwiZXhwIjoxNjUzMDU4Nzc4fQ.fVKqQ_MG7lNAPEapt_LYxrE7AUOtZFGL1x2shyWvxHE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"perTxNome\": \"Administrador\",\r\n        \"perTxStatus\": \"I\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/perfil/updatePerfil",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"perfil",
+								"updatePerfil"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sistema Controller",
+			"item": [
+				{
+					"name": "Listar todos Sistemas",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQcm9qZWN0V2ViIiwic3ViIjoicm9uZGxleSIsImlhdCI6MTY1MzA1OTEwOCwiZXhwIjoxNjUzMDU5NzA4fQ.rq7BrSfRmr6R_xHos2fohAGSGRjDOk51aXAAXo7NflY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/sistema/listarTodos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sistema",
+								"listarTodos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sistema pelo ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQcm9qZWN0V2ViIiwic3ViIjoicm9uZGxleSIsImlhdCI6MTY1MzA1OTEwOCwiZXhwIjoxNjUzMDU5NzA4fQ.rq7BrSfRmr6R_xHos2fohAGSGRjDOk51aXAAXo7NflY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "1",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/sistema/sistemaById",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sistema",
+								"sistemaById"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar Sistema",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQcm9qZWN0V2ViIiwic3ViIjoicm9uZGxleSIsImlhdCI6MTY1MzA1OTEwOCwiZXhwIjoxNjUzMDU5NzA4fQ.rq7BrSfRmr6R_xHos2fohAGSGRjDOk51aXAAXo7NflY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"sisTxNome\": \"Sistema Teste\",\r\n    \"sisTxStatus\": \"A\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/sistema/createSistema",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sistema",
+								"createSistema"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Sistema",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQcm9qZWN0V2ViIiwic3ViIjoicm9uZGxleSIsImlhdCI6MTY1MzA1OTEwOCwiZXhwIjoxNjUzMDU5NzA4fQ.rq7BrSfRmr6R_xHos2fohAGSGRjDOk51aXAAXo7NflY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"sisNrId\": 1,\r\n    \"sisTxNome\": \"Sistema 1 Teste\",\r\n    \"sisTxStatus\": \"A\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/sistema/updateSistema",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sistema",
+								"updateSistema"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transação Controller",
+			"item": [
+				{
+					"name": "Listar Todas Transações",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQcm9qZWN0V2ViIiwic3ViIjoicm9uZGxleSIsImlhdCI6MTY1MzA2Mzk2MiwiZXhwIjoxNjUzMDY0NTYyfQ.6rgSHuYvOhK75UgA0MBWExtp_mUMG-plie8OPgXog60",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/transacao/listarTodos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"transacao",
+								"listarTodos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Transação por ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQcm9qZWN0V2ViIiwic3ViIjoicm9uZGxleSIsImlhdCI6MTY1MzA2Mzk2MiwiZXhwIjoxNjUzMDY0NTYyfQ.6rgSHuYvOhK75UgA0MBWExtp_mUMG-plie8OPgXog60",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "1",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/transacao/transacaoById",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"transacao",
+								"transacaoById"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Transação por Serviço ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQcm9qZWN0V2ViIiwic3ViIjoicm9uZGxleSIsImlhdCI6MTY1MzA2Mzk2MiwiZXhwIjoxNjUzMDY0NTYyfQ.6rgSHuYvOhK75UgA0MBWExtp_mUMG-plie8OPgXog60",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "3",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/transacao/transacaoByServico",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"transacao",
+								"transacaoByServico"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Transação",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQcm9qZWN0V2ViIiwic3ViIjoicm9uZGxleSIsImlhdCI6MTY1MzA2Mzk2MiwiZXhwIjoxNjUzMDY0NTYyfQ.6rgSHuYvOhK75UgA0MBWExtp_mUMG-plie8OPgXog60",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"traNrId\": 1,\r\n        \"perNrId\": {\r\n            \"perNrId\": 4,\r\n            \"perTxNome\": \"Administrador\",\r\n            \"perTxStatus\": \"A\"\r\n        },\r\n        \"serNrId\": {\r\n            \"serNrId\": 3,\r\n            \"sisNrId\": {\r\n                \"sisNrId\": 1,\r\n                \"sisTxNome\": \"Sistema 1 Teste\",\r\n                \"sisTxStatus\": \"A\"\r\n            },\r\n            \"serTxNome\": \"Transacoes Services\",\r\n            \"serTxUrl\": \"localhost:8080/api/transacao\",\r\n            \"serTxStatus\": \"A\"\r\n        },\r\n        \"traTxNome\": \"Criar Transaçao\",\r\n        \"traTxStatus\": \"A\",\r\n        \"traTxUrl\": \"/createTransacao\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/transacao/updateTransacao",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"transacao",
+								"updateTransacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar Transação",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQcm9qZWN0V2ViIiwic3ViIjoicm9uZGxleSIsImlhdCI6MTY1MzA2NDE1MiwiZXhwIjoxNjUzMDY0NzUyfQ.49i4giJ89Zc9cjnc8UPdQ24uK5bIUEQwweOYk8rOtm4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"perNrId\": {\r\n    \"perNrId\": 1,\r\n    \"perTxNome\": \"Usuario\",\r\n    \"perTxStatus\": \"A\"\r\n    },\r\n    \"serNrId\": {\r\n        \"serNrId\": 3,\r\n        \"sisNrId\": {\r\n            \"sisNrId\": 1,\r\n            \"sisTxNome\": \"Sistema 1 Teste\",\r\n            \"sisTxStatus\": \"A\"\r\n        },\r\n        \"serTxNome\": \"Transacoes Services\",\r\n        \"serTxUrl\": \"localhost:8080/api/transacao\",\r\n        \"serTxStatus\": \"A\"\r\n    },\r\n    \"traTxNome\": \"Criar Transaçao\",\r\n    \"traTxStatus\": \"A\",\r\n    \"traTxUrl\": \"/createTransacao\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/transacao/createTransacao",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"transacao",
+								"createTransacao"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Serviço Controller",
+			"item": [
+				{
+					"name": "Listar Todos Serviços",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQcm9qZWN0V2ViIiwic3ViIjoicm9uZGxleSIsImlhdCI6MTY1MzA2MTMwNiwiZXhwIjoxNjUzMDYxOTA2fQ.mcgFE11JFA4cvsYCPv_6Dd2VtrFrCwGo4bJRTE0Sncc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/servico/listarTodos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"servico",
+								"listarTodos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Serviço por ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQcm9qZWN0V2ViIiwic3ViIjoicm9uZGxleSIsImlhdCI6MTY1MzA2MTMwNiwiZXhwIjoxNjUzMDYxOTA2fQ.mcgFE11JFA4cvsYCPv_6Dd2VtrFrCwGo4bJRTE0Sncc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "1",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/servico/servicoById",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"servico",
+								"servicoById"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Serviços do Sistema por ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQcm9qZWN0V2ViIiwic3ViIjoicm9uZGxleSIsImlhdCI6MTY1MzA2MzI0OCwiZXhwIjoxNjUzMDYzODQ4fQ.Vaz3xF3MPq_IeD5JKky7nmriSV6dQ7goM7-2XRNQPyk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "1",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/servico/servicoBySistema",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"servico",
+								"servicoBySistema"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Transacoes do Serviço ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQcm9qZWN0V2ViIiwic3ViIjoicm9uZGxleSIsImlhdCI6MTY1MzA2MzI0OCwiZXhwIjoxNjUzMDYzODQ4fQ.Vaz3xF3MPq_IeD5JKky7nmriSV6dQ7goM7-2XRNQPyk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "1",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/servico/transacaoByServico",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"servico",
+								"transacaoByServico"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar Serviço",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQcm9qZWN0V2ViIiwic3ViIjoicm9uZGxleSIsImlhdCI6MTY1MzA1OTc2NiwiZXhwIjoxNjUzMDYwMzY2fQ.CW5bOFBbBpmlXncVOB9XqkOf8byQZqrgwJ4Uc3zOxDU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"sisNrId\": {\r\n        \"sisNrId\": 1,\r\n        \"sisTxNome\": \"Sistema 1 Teste\",\r\n        \"sisTxStatus\": \"A\"\r\n    },\r\n    \"serTxNome\": \"Usuario Services\",\r\n    \"serTxUrl\": \"localhost:8080/api/usuario\",\r\n    \"serTxStatus\": \"A\"    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/servico/createServico",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"servico",
+								"createServico"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Serviço",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQcm9qZWN0V2ViIiwic3ViIjoicm9uZGxleSIsImlhdCI6MTY1MzA1OTc2NiwiZXhwIjoxNjUzMDYwMzY2fQ.CW5bOFBbBpmlXncVOB9XqkOf8byQZqrgwJ4Uc3zOxDU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"serNrId\": 2,\r\n    \"sisNrId\": {\r\n        \"sisNrId\": 1,\r\n        \"sisTxNome\": \"Sistema 1 Teste\",\r\n        \"sisTxStatus\": \"A\"\r\n    },\r\n    \"serTxNome\": \"Usuario Services\",\r\n    \"serTxUrl\": \"localhost:8080/api/usuario\",\r\n    \"serTxStatus\": \"A\"    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/servico/updateServico",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"servico",
+								"updateServico"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Autenticacao com Login e Senha Copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTE1NDYyOTIsInN1YiI6IlRlc3RlIEp3dCBBUEkiLCJleHAiOjE2NTE1NDgwOTJ9.TO_B_XeL0pELeTq7nUZL_9EE5EE1KeLsngMSUdiqPbg",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n    {\r\n        \"usuTxLogin\": \"rondley\",\r\n        \"usuTxSenha\": \"123\"\r\n    }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
