@@ -3,6 +3,7 @@ package br.edu.ifs.project_web.controller;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -53,6 +54,11 @@ public class AuthenticationController {
 		
 		usuService.setToken(usu, token);
 		logService.criar(usu.getUsuNrId(), "Fez login no sistema.");
+
+		/*HttpHeaders header = new HttpHeaders();
+		header.set("Content-Type", "application/json");
+		header.setBearerAuth(token);*/
+
 		return usu.toUsuario();
 	}
 

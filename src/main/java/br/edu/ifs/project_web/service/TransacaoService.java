@@ -26,6 +26,7 @@ public class TransacaoService {
 	
 	public List<Transacao> getTransByService(int serNrId) {
         List<Transacao> l = new ArrayList<>();
+        //List<Transacao> l1 = transacaoRepository.getTransByService(serNrId);
         transacaoRepository.getTransByService(serNrId).forEach(item -> {
             l.add(item);
                 });

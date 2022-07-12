@@ -66,6 +66,7 @@ public class Usuario implements UserDetails {
 
 
 	public String usuToString(Usuario usuario) {
+		//GSON
     	String toString="{\r\n"
     			+ "        \"usuNrId\": "+usuario.getUsuNrId()+",\r\n"
     			+ "        \"perNrId\": "+usuario.getPerNrId().getPerNrId()+"\r\n"

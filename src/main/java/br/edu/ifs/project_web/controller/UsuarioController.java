@@ -60,6 +60,23 @@ public class UsuarioController {
             return response;
     	}
     }
+
+    @GetMapping(value = "/usuByLoginExist")
+    public Object getByLoginExist(@RequestParam String usuTxLogin) {
+        Boolean existe = false;
+        try {
+            logService.criar(0, "Sistema Buscou o usuário: "+usuTxLogin);
+            usuarioService.getByLogin(usuTxLogin);
+            return existe = true;
+        } catch (NoSuchElementException e) {
+            response.setCodigo(400);
+            response.setMensagem("Usuario não encontrado");
+            response.setValue(false);
+            logExecucao=("Sistema não encontrou usuário: "+usuTxLogin+".");
+            logService.criar(0, logExecucao);
+            return existe;
+        }
+    }
     
     @GetMapping(value = "/usuById")
     public Object getById(HttpServletRequest request, @RequestBody Integer usuNrId) {
