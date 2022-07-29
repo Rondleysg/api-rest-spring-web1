@@ -8,10 +8,7 @@ import br.edu.ifs.project_web.dto.UsuarioDTO;
 import br.edu.ifs.project_web.model.Usuario;
 import br.edu.ifs.project_web.repository.UsuarioRepository;
 
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -52,6 +49,17 @@ public class UsuarioService {
     }
 
     public UsuarioDTO getByLogin(String login) {
+        return usuarioRepository.findByUsuTxLogin(login).get().toUsuario();
+    }
+
+    public UsuarioDTO loginExiste(String login) throws Exception{
+        try{
+            if(usuarioRepository.findByUsuTxLogin(login).get().toUsuario()==null){
+                return null;
+            }
+        }catch (NoSuchElementException e){
+            return null;
+        }
         return usuarioRepository.findByUsuTxLogin(login).get().toUsuario();
     }
     
@@ -108,6 +116,17 @@ public class UsuarioService {
     	JSONObject jsonObject = new JSONObject(payload);
     	UsuarioDTO usu=getByLogin(jsonObject.getString("sub"));
     	return usu;
+    }
+
+    public Usuario getUsuarioHeader(HttpServletRequest request) {
+        String token = request.getHeader("Authorization");
+        token.replace("Bearer ", "");
+        String[] chunks = token.split("\\.");
+        Base64.Decoder decoder = Base64.getUrlDecoder();
+        String payload = new String(decoder.decode(chunks[1]));
+        JSONObject jsonObject = new JSONObject(payload);
+        Usuario usu=getByLoginUsu(jsonObject.getString("sub"));
+        return usu;
     }
     
 }

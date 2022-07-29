@@ -53,6 +53,7 @@ public class JWTConfiguration extends WebSecurityConfigurerAdapter{
 	@Override
 	public void configure(WebSecurity web) throws Exception{
 		web.ignoring().antMatchers("/api/usuario/usuByLoginExist");
+		web.ignoring().antMatchers("/api/usuario/criarUsuario");
 	}
 
 	@Override

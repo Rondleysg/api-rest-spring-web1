@@ -42,16 +42,25 @@ public class UsuarioController {
     
     
     @GetMapping(value = "/usuByLogin")
-    public Object getByLogin(HttpServletRequest request, @RequestBody String usuTxLogin) {
+    public Object getByLogin(HttpServletRequest request, @RequestParam String usuTxLogin) {
     	UsuarioDTO usu = usuarioService.getUsuHeader(request);
     	if(usu.getPerNrId().getPerNrId()<2) {
     		logService.criar(usu.getUsuNrId(), "Tentou buscar um usuário");
     		return null;
     	}
-    	try { 
-    		logService.criar(usu.getUsuNrId(), "Buscou o usuário: "+usuTxLogin);
-    		return usuarioService.getByLogin(usuTxLogin);
-    	} catch (NoSuchElementException e) {
+    	try {
+            if(repository.findByUsuTxLogin(usuTxLogin) == null) {
+                response.setCodigo(400);
+                response.setMensagem("Login não encontrado");
+                response.setValue(false);
+                logExecucao=("Tentativa de buscar usuario por login com erro.");
+                logService.criar(usu.getUsuNrId(), logExecucao);
+                return response;
+            }else {
+                logService.criar(usu.getUsuNrId(), "Buscou o usuário: "+usuTxLogin);
+                return repository.findByUsuTxLogin(usuTxLogin);
+            }
+    	} catch (Exception e) {
     		response.setCodigo(400);
             response.setMensagem("Login não encontrado");
             response.setValue(false);
@@ -59,6 +68,19 @@ public class UsuarioController {
             logService.criar(usu.getUsuNrId(), logExecucao);
             return response;
     	}
+    }
+
+    @GetMapping(value = "/usuByToken")
+    public Object getByToken(HttpServletRequest request) {
+        UsuarioDTO usu = usuarioService.getUsuHeader(request);
+        try {
+            return usu;
+        } catch (NoSuchElementException e) {
+            response.setCodigo(400);
+            response.setMensagem("Usuario não encontrado");
+            response.setValue(false);
+            return response;
+        }
     }
 
     @GetMapping(value = "/usuByLoginExist")
@@ -79,7 +101,7 @@ public class UsuarioController {
     }
     
     @GetMapping(value = "/usuById")
-    public Object getById(HttpServletRequest request, @RequestBody Integer usuNrId) {
+    public Object getById(HttpServletRequest request, @RequestParam Integer usuNrId) {
     	UsuarioDTO usu = usuarioService.getUsuHeader(request);
     	if(usu.getPerNrId().getPerNrId()<2) {
     		logService.criar(usu.getUsuNrId(), "Tentou buscar um usuário");
@@ -129,6 +151,19 @@ public class UsuarioController {
         return ResponseEntity.ok(repository.save(usuario));
     }
 
+
+    @PutMapping("/salvarNome")
+    public ResponseEntity<Usuario> salvarNome(@RequestBody String novoNome, HttpServletRequest request) {
+        Usuario usu = usuarioService.getUsuarioHeader(request);
+        if(usu.getPerNrId().getPerNrId()<2) {
+            logService.criar(usu.getUsuNrId(), "Tentou atualizar seu nome.");
+            return null;
+        }
+        logService.criar(usu.getUsuNrId(), "Atualizou seu nome: "+novoNome);
+        usu.setUsuTxNome(novoNome);
+        return ResponseEntity.ok(repository.save(usu));
+    }
+
     @GetMapping("/validarSenha")
     public ResponseEntity<Boolean> validarSenha(@RequestParam String login, @RequestParam String password) {
         Optional<Usuario> optUsuario = repository.findByUsuTxLogin(login);
@@ -146,16 +181,18 @@ public class UsuarioController {
     }
     
     @PostMapping(value = "/criarUsuario")
-    public Object criarUsuario(@RequestBody UsuarioCreate usuarioCreate, HttpServletRequest request) throws Throwable {
-    	UsuarioDTO usu = usuarioService.getUsuHeader(request);
-    	/*if(usu.getPerNrId().getPerNrId()<2) {
-    		logService.criar(usu.getUsuNrId(), "Tentou criar um usuário.");
-    		response.setCodigo(400);
-            response.setMensagem("Rank insuficiente");
-            response.setValue(false);
-    	}*/
+    public Object criarUsuario(@RequestBody UsuarioCreate usuarioCreate) throws Throwable {
+        Usuario usuario = new Usuario();
         try {
-        	Usuario usuario = usuarioCreate.toUsuario();
+            if(usuarioService.loginExiste(usuarioCreate.getUsuTxLogin()) != null){
+                response.setCodigo(400);
+                response.setMensagem("Login já existente");
+                response.setValue(false);
+                logExecucao=("Tentativa de cadastro com erro.");
+                logService.criar(0, logExecucao);
+                return response;
+            }
+            usuario = usuarioCreate.toUsuario();
         	usuario.setPerNrId(perfilService.findByPerNrId(1));
         	usuario.setUsuTxToken("0");
         	usuario.setUsuTxStatus('A');
@@ -164,15 +201,15 @@ public class UsuarioController {
             response.setValue(true);
             response.setCodigo(200);
             response.setMensagem("Usuario: "+usuario.getUsuTxLogin()+" criado.");
-            logExecucao="Novo usuario criado: " + usuario.getUsuTxLogin();
-            logService.criar(usu.getUsuNrId(), logExecucao);
+            logExecucao="Novo usuario se cadastrou: " + usuario.getUsuTxLogin();
+            logService.criar(usuario.getUsuNrId(), logExecucao);
         } catch (Exception e) {
             response.setCodigo(400);
             e.printStackTrace();
             response.setMensagem(e.getMessage());
             response.setValue(false);
-            logExecucao=("Tentativa de criar novo usuario com erro.");
-            logService.criar(usu.getUsuNrId(), logExecucao);
+            logExecucao=("Tentativa de cadastro com erro.");
+            logService.criar(usuario.getUsuNrId(), logExecucao);
         }
         return response;
     }
